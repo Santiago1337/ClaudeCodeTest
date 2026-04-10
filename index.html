@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Assault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #06060f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Phaser 3 -->
+<script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+
+<!-- Game config & constants -->
+<script src="src/config.js"></script>
+
+<!-- Utilities -->
+<script src="src/utils/TextureFactory.js"></script>
+<script src="src/utils/ParticleEffects.js"></script>
+
+<!-- Entities -->
+<script src="src/entities/Bullet.js"></script>
+<script src="src/entities/Player.js"></script>
+<script src="src/entities/Enemy.js"></script>
+
+<!-- Scenes -->
+<script src="src/scenes/BootScene.js"></script>
+<script src="src/scenes/MenuScene.js"></script>
+<script src="src/scenes/GameScene.js"></script>
+<script src="src/scenes/HUDScene.js"></script>
+<script src="src/scenes/LevelTransitionScene.js"></script>
+<script src="src/scenes/GameOverScene.js"></script>
+<script src="src/scenes/PauseScene.js"></script>
+
+<!-- Bootstrap -->
+<script>
+    const game = new Phaser.Game({
+        type:            Phaser.AUTO,
+        width:           800,
+        height:          600,
+        backgroundColor: '#06060f',
+        physics: {
+            default: 'arcade',
+            arcade:  { debug: false, gravity: { x: 0, y: 0 } }
+        },
+        scene: [
+            BootScene,
+            MenuScene,
+            GameScene,
+            HUDScene,
+            LevelTransitionScene,
+            GameOverScene,
+            PauseScene
+        ]
+    });
+</script>
+</body>
+</html>
